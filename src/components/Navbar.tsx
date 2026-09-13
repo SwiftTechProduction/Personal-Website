@@ -10,13 +10,15 @@ const Navbar = () => {
                     <a href="#about" className='hover:text-gray-400'>About Me</a>
                     <a href="#skills" className='hover:text-gray-400'>Skills</a>
                     <a href="#projects" className='hover:text-gray-400'>Projects</a>
+                    <a href="#experience" className='hover:text-gray-400'>Experience</a>
+                    <a href="#testimonial" className='hover:text-gray-400'>Testimonial</a>
                     <a href="#contact" className='hover:text-gray-400'>Contact</a>
                 </div>
-                <button className='bg-gradient-to-r from-green-400 to-blue-500 text-white md:inline
+                <a href='https://www.linkedin.com/in/lukas-herdian-w-553515146/'className='bg-gradient-to-r from-green-400 to-blue-500 text-white md:inline
                     transform transition-transform duration-300 hover:scale-105 px-2 py-1 md:px-4 md:py-2 
                     ml-5 whitespace-nowrap rounded-full'>
                     Connect Me
-                </button>
+                </a>
             </div>
         </nav>
     )

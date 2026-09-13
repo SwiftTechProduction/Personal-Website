@@ -26,6 +26,7 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className='flex-1 w-full'>
+
                         <form className='space-y-4'>
                             <div>
                                 <label htmlFor='name' className='block-mb-2'>Your Name</label>
@@ -57,6 +58,7 @@ const Contact = () => {
                                 Send
                             </button>
                         </form>
+                        
                     </div>
                 </div>
             </div>

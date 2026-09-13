@@ -1,6 +1,20 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
+import Backendless from 'backendless'
 
-const skills = [
+Backendless.initApp(
+    '755A42C1-69A5-4631-82E3-F212C45756C8',
+    '5EAFB934-9DC0-4D8E-BFA0-F7FB57213B66'
+)
+
+type Skill = {
+    objectId: string
+    title: string
+    description: string
+    sortOrder: number
+}
+
+/*const skills = [
     {
         id: 1,
         title: 'Front End Skills',
@@ -31,9 +45,25 @@ const skills = [
         title: 'IT Hardware',
         description: 'Ultra High-End PC Assembly, DIY Water Cooling Custom, Repair & Troubleshooting',
     },
-];
+];*/
 
 const Skills = () => {
+    const [skills, setSkills] = useState<Skill[]>([])
+
+    useEffect(() => {
+        Backendless.Data.of('Skills')
+            .find()
+            .then((data) => {
+                const sortedSkills = (data as Skill[]).sort(
+                    (a, b) => a.sortOrder - b.sortOrder
+                )
+                setSkills(sortedSkills)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }, [])
+
     return (
         <div className='bg-black text-white py-16' id='skills'>
             <div className='container mx-auto px-8 md:px-16 lg:px-24'>
@@ -41,7 +71,7 @@ const Skills = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                     {skills.map((skills) => (
                         <div
-                            key={skills.id}
+                            key={skills.objectId}
                             className='bg-gray-800 px-6 pb-6 rounded-lg hover:shadow-lg transform
                             transition-transform duration-300 hover:scale-105 flex flex-col'
                         >
@@ -49,7 +79,7 @@ const Skills = () => {
                                 className='text-right text-2xl font-bold text-transparent bg-clip-text
                                 bg-gradient-to-r from-green-600 to-blue-400 mt-4'
                             >
-                                {skills.id}
+                                {skills.sortOrder}
                             </div>
 
                             <h3 className='mt-2 text-2xl font-bold text-transparent bg-clip-text
@@ -58,10 +88,10 @@ const Skills = () => {
                                 {skills.title}
                             </h3>
                             <p className='mt-2 flex-1 text-gray-300'>{skills.description}</p>
-                            <a href='#' 
+                            {/*<a href='#'
                                 className='inline-block text-green-400 hover:text-blue-500'>
                                 Read More
-                            </a>
+                            </a>*/}
                         </div>
                     ))}
                 </div>
