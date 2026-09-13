@@ -1,5 +1,7 @@
 import React from 'react'
 import apar from '../assets/apar.jpg'
+import { useState } from 'react'
+
 
 const projects = [
     {
@@ -30,6 +32,7 @@ const projects = [
 ];
 
 const Projects = () => {
+    const [expandedProjectId, setExpandedProjectId] = useState<number | null>(null)
     return (
         <div className='bg-black text-white py-16' id='projects'>
             <div className='container mx-auto px-8 md:px-16 lg:px-24'>
@@ -77,31 +80,44 @@ const Projects = () => {
                             <div className='mt-2 '>
                                 Brief Project Description
                             </div>
+
                             <p className='mt-2 text-gray-300 text-justify'>{projects.brief}</p>
-                            <div className='mt-2 '>
-                                Situation
-                            </div>
-                            <p className='mt-2 text-gray-300 text-justify'>{projects.situation}</p>
-                            <div className='mt-2 '>
-                                Task
-                            </div>
-                            <p className='mt-2 text-gray-300 text-justify'>{projects.task}</p>
-                            <div className='mt-2 '>
-                                Action
-                            </div>
-                            <p className='mt-2 text-gray-300 text-justify'>{projects.action}</p>
-                            <div className='mt-2 '>
-                                Result
-                            </div>
-                            <p className='mt-2 text-gray-300 text-justify'>{projects.result}</p>
-                            <a href='#' className='mt-4 inline-block text-green-400 hover:text-blue-500'>
-                                Read More
-                            </a>
+                            {expandedProjectId === projects.id && (
+                                <div>
+                                    <div className='mt-2 '>
+                                        Situation
+                                    </div>
+                                    <p className='mt-2 text-gray-300 text-justify'>{projects.situation}</p>
+                                    <div className='mt-2 '>
+                                        Task
+                                    </div>
+                                    <p className='mt-2 text-gray-300 text-justify'>{projects.task}</p>
+                                    <div className='mt-2 '>
+                                        Action
+                                    </div>
+                                    <p className='mt-2 text-gray-300 text-justify'>{projects.action}</p>
+                                    <div className='mt-2 '>
+                                        Result
+                                    </div>
+                                    <p className='mt-2 text-gray-300 text-justify'>{projects.result}</p>
+                                </div>
+                            )}
+
+                            <button className='inline-block text-green-400 hover:text-blue-500'
+                                onClick={() =>
+                                    setExpandedProjectId(
+                                        expandedProjectId === projects.id ? null : projects.id
+                                    )
+                                }
+                            >
+                                {expandedProjectId === projects.id ? 'Show Less' : 'Read More'}
+                            </button>
+
                         </div>
                     ))}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
