@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 import { FaEnvelope, FaMapMarkedAlt, FaPhone } from 'react-icons/fa'
 
 const Contact = () => {

@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 import indomaret from '../assets/Indomaret.png'
 import kiyona from '../assets/kiyona.png'
 

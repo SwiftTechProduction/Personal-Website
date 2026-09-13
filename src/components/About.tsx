@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 import profileImage from '../assets/fotoprofile.jpeg'
 const About = () => {
     return (
